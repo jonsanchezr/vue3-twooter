@@ -1,15 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <nav>
+      <div class="navigation__logo">
+        Twotter
+      </div>
+      <div class="navigation__user">
+        {{ state.user.username }}
+      </div>
+    </nav>
+    <UserProfile />   
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { reactive } from 'vue';
+import UserProfile from './components/UserProfile';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    UserProfile
+  },
+  setup() {
+    const state = reactive({
+      user: {
+        username: '_jsanchez'
+      }
+    });
+
+    return {
+      state
+    }
   }
 }
 </script>
@@ -19,8 +40,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  min-height: 100vh;
+  background-color: #F3F5FA;
 }
 </style>
